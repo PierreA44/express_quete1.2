@@ -2,12 +2,12 @@ const database = require("../../database");
 
 const getUsers = (req, res) => {
   database
-    .query("select * from users")
+    .query("SELECT * FROM users")
     .then(([users]) => {
       res.json(users);
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
       res.sendStatus(500);
     });
 };
@@ -16,7 +16,7 @@ const getUsersById = (req, res) => {
   const id = parseInt(req.params.id, 10);
 
   database
-    .query("select * from users where id = ?", [id])
+    .query("SELECT * FROM users WHERE id = ?", [id])
     .then(([users]) => {
       if (users[0] != null) {
         res.json(users[0]);
@@ -25,7 +25,7 @@ const getUsersById = (req, res) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
       res.sendStatus(500);
     });
 };

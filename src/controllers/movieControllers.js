@@ -29,7 +29,7 @@ const database = require("../../database");
 
 const getMovies = (req, res) => {
   database
-    .query("select * from movies")
+    .query("SELECT * FROM movies")
     .then(([movies]) => {
       res.json(movies);
     })
@@ -43,7 +43,7 @@ const getMovieById = (req, res) => {
   const id = parseInt(req.params.id, 10);
 
   database
-    .query("select * from movies where id = ?", [id])
+    .query("SELECT * FROM movies WHERE id = ?", [id])
     .then(([movies]) => {
       if (movies[0] != null) {
         res.json(movies[0]);
