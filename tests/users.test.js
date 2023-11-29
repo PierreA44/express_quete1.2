@@ -42,7 +42,7 @@ describe("POST /api/users", () => {
     };
 
     const response = await request(app).post("/api/users").send(newUser);
-
+    console.log(request);
     expect(response.status).toEqual(201);
     expect(response.body).toHaveProperty("id");
     expect(typeof response.body.id).toBe("number");
