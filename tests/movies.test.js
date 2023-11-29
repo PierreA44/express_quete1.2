@@ -15,7 +15,7 @@ describe("GET /api/movies", () => {
 
 describe("GET /api/movies/:id", () => {
   it("should return one movie", async () => {
-    const response = await request(app).get("/api/movies/1");
+    const response = await request(app).get("/api/movies/2");
 
     expect(response.headers["content-type"]).toMatch(/json/);
 
@@ -158,6 +158,19 @@ describe("PUT /api/movies/:id", () => {
     };
 
     const response = await request(app).put("/api/movies/0").send(newMovie);
+
+    expect(response.status).toEqual(404);
+  });
+});
+
+describe("DELETE /api/movies/:id", () => {
+  it("should delete movie", async () => {
+    const response = await request(app).delete("/api/movies/8");
+
+    expect(response.status).toEqual(204);
+  });
+  it("should delete no movie", async () => {
+    const response = await request(app).delete("/api/movies/0");
 
     expect(response.status).toEqual(404);
   });

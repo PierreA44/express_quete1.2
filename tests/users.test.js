@@ -17,7 +17,7 @@ describe("GET /api/users", () => {
 
 describe("GET /api/users/:id", () => {
   it("should return one user", async () => {
-    const response = await request(app).get("/api/users/1");
+    const response = await request(app).get("/api/users/2");
 
     expect(response.headers["content-type"]).toMatch(/json/);
 
@@ -157,6 +157,19 @@ describe("PUT /api/users/:id", () => {
     };
 
     const response = await request(app).put("/api/users/0").send(newUser);
+
+    expect(response.status).toEqual(404);
+  });
+});
+
+describe("DELETE /api/users/:id", () => {
+  it("should delete user", async () => {
+    const response = await request(app).delete("/api/users/8");
+
+    expect(response.status).toEqual(204);
+  });
+  it("should delete no user", async () => {
+    const response = await request(app).delete("/api/users/0");
 
     expect(response.status).toEqual(404);
   });
