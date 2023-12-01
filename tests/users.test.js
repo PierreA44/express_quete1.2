@@ -164,7 +164,7 @@ describe("PUT /api/users/:id", () => {
 
 describe("DELETE /api/users/:id", () => {
   it("should delete user", async () => {
-    const response = await request(app).delete("/api/users/8");
+    const response = await request(app).delete("/api/users/9");
 
     expect(response.status).toEqual(204);
   });

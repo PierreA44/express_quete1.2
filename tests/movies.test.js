@@ -165,7 +165,7 @@ describe("PUT /api/movies/:id", () => {
 
 describe("DELETE /api/movies/:id", () => {
   it("should delete movie", async () => {
-    const response = await request(app).delete("/api/movies/8");
+    const response = await request(app).delete("/api/movies/9");
 
     expect(response.status).toEqual(204);
   });
